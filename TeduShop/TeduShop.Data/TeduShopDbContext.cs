@@ -36,6 +36,8 @@ namespace TeduShop.Data
 
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
 
+        public DbSet<Error> Errors { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder builder)
         {
             
