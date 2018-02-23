@@ -232,6 +232,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="infrastructure\Core\ApiControllerBase.cs" />
+    <Compile Include="infrastructure\Core\PaginationSet.cs" />
     <Compile Include="infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\PostCategoryViewModel.cs" />
