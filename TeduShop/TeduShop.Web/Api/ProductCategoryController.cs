@@ -34,7 +34,7 @@ namespace TeduShop.Web.Api
 
                 totalRow = model.Count();
 
-                var query = model.OrderBy(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
+                var query = model.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
 
                 var responseData = Mapper.Map<IEnumerable<ProductCategoryViewModel>>(query);
 
