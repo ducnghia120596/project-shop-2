@@ -23,6 +23,21 @@ namespace TeduShop.Web.Api
             this._productCategoryService = productCategoryService;
         }
 
+        [Route("getallparents")]
+        [HttpGet]
+        public HttpResponseMessage GetAll(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var model = _productCategoryService.GetAll();
+
+                var responseData = Mapper.Map<IEnumerable<ProductCategoryViewModel>>(model);
+
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                return response;
+            });
+        }
+
         [Route("getall")]
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request,string keyword, int page,int pageSize=20)
@@ -52,6 +67,7 @@ namespace TeduShop.Web.Api
 
         [Route("create")]
         [HttpPost]
+        [AllowAnonymous]
         public HttpResponseMessage Create(HttpRequestMessage request,ProductCategoryViewModel productCategoryVM)
         {
             return CreateHttpResponse(request, () =>
