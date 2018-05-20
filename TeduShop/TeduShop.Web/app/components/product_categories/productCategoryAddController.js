@@ -7,7 +7,6 @@
         $scope.productCategory = {
             CreatedDate: new Date(),
             Status: true,
-            Name: "Danh mục 1"
         }
         // phương thức để submit
         $scope.AddProductCategory = AddProductCategory;
