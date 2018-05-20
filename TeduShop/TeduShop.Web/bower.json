@@ -6,7 +6,9 @@
     "angular-ui-router": "~0.2.18",
     "jquery": "~3.3.1",
     "bootstrap": "~3.3.1",
-    "toastr": "~2.1.2"
+    "toastr": "~2.1.2",
+    "bootbox": "~4.4.0",
+    "ngBootbox": "0.1.5"
   },
   "resolutions": {
     "jquery": "1.9.1 - 3"
