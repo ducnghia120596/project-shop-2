@@ -1,21 +1,15 @@
 ﻿(function (app) {
     app.controller("productCategoryAddController", productCategoryAddController);
 
-    productCategoryAddController.$inject = ['$scope', 'apiService', 'notificationService', '$state', 'commonService'];
+    productCategoryAddController.$inject = ['$scope','apiService','notificationService','$state'];
     // $state thuộc ui-router angular ( cơ chế điều hướng )
-    function productCategoryAddController($scope, apiService, notificationService, $state, commonService) {
+    function productCategoryAddController($scope, apiService, notificationService, $state) {
         $scope.productCategory = {
             CreatedDate: new Date(),
             Status: true,
         }
         // phương thức để submit
         $scope.AddProductCategory = AddProductCategory;
-        // Phương thức tự động sinh Alias
-        $scope.GetSeoTitle = GetSeoTitle;
-
-        function GetSeoTitle() {
-            $scope.productCategory.Alias = commonService.getSeoTitle($scope.productCategory.Name);
-        }
 
         function AddProductCategory() {
             apiService.post('/api/productcategory/create', $scope.productCategory,
