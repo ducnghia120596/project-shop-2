@@ -53,7 +53,8 @@
             $http.delete(url, data).then(function (result) {
                 success(result);
             }, function (error) {
-                if (error.status === 400) {
+                console.log(error.status)
+                if (error.status === 401) {
                     notificationService.displayError('Authenticate is required.');
                 }
                 else if (failure != null) {
