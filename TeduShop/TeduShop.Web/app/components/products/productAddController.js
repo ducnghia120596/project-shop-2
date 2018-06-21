@@ -35,6 +35,16 @@
                 console.log('Can not get list parent.')
             });
         }
+
+
         loadProductCategory();
+
+        $scope.ChooseImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.product.Image = fileUrl;
+            };
+            finder.popup();
+        };
     }
 })(angular.module('tedushop.products'));
