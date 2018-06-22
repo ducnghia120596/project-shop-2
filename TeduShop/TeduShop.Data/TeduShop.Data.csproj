@@ -76,6 +76,14 @@
     <Compile Include="Migrations\201801310807040_Intergrate-AspNetIdentity.Designer.cs">
       <DependentUpon>201801310807040_Intergrate-AspNetIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806210935476_AddTagsFieldForProduct.cs" />
+    <Compile Include="Migrations\201806210935476_AddTagsFieldForProduct.Designer.cs">
+      <DependentUpon>201806210935476_AddTagsFieldForProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806211025238_AddTagRepository.cs" />
+    <Compile Include="Migrations\201806211025238_AddTagRepository.Designer.cs">
+      <DependentUpon>201806211025238_AddTagRepository.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -90,6 +98,7 @@
     <Compile Include="Repositories\PostTagRepository.cs" />
     <Compile Include="Repositories\ProductCategoryRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="Repositories\ProductTagRepository.cs" />
     <Compile Include="TeduShopDbContext.cs" />
   </ItemGroup>
@@ -116,6 +125,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801310807040_Intergrate-AspNetIdentity.resx">
       <DependentUpon>201801310807040_Intergrate-AspNetIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806210935476_AddTagsFieldForProduct.resx">
+      <DependentUpon>201806210935476_AddTagsFieldForProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806211025238_AddTagRepository.resx">
+      <DependentUpon>201806211025238_AddTagRepository.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

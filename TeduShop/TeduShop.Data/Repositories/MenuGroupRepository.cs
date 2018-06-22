@@ -12,7 +12,7 @@ namespace TeduShop.Data.Repositories
     {
 
     }
-    class MenuGroupRepository : RepositoryBase<MenuGroup>, IMenuGroupRepository
+    public class MenuGroupRepository : RepositoryBase<MenuGroup>, IMenuGroupRepository
     {
         public MenuGroupRepository(IDbFactory dbFactory) : base(dbFactory)
         {

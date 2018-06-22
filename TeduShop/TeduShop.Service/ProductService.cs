@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeduShop.Common;
 using TeduShop.Data.Infrastructure;
 using TeduShop.Data.Repositories;
 using TeduShop.Model.Models;
@@ -21,17 +22,43 @@ namespace TeduShop.Service
     }
     public class ProductService : IProductService
     {
-        IProductRepository _productRepository;
-        IUnitOfWork _unitOfWork;
+        private IProductRepository _productRepository;
+        private IProductTagRepository _productTagRepository;
+        private ITagRepository _tagRepository;
+        private IUnitOfWork _unitOfWork;
 
-        public ProductService(IProductRepository productRepository, IUnitOfWork unitOfWork)
+        public ProductService(IProductRepository productRepository,IProductTagRepository productTagRepository, ITagRepository tagRepository,IUnitOfWork unitOfWork)
         {
             this._productRepository = productRepository;
+            this._productTagRepository = productTagRepository;
+            this._tagRepository = tagRepository;
             this._unitOfWork = unitOfWork;
         }
         public Product Add(Product Product)
         {
-            return _productRepository.Add(Product);
+            var product = _productRepository.Add(Product);
+            _unitOfWork.Commit();
+            if (!string.IsNullOrEmpty(Product.Tags))
+            {
+                string[] tags = Product.Tags.Split(',');
+                for (var i = 0; i < tags.Length; i++)
+                {
+                    var tagID = StringHelper.ToUnsignString(tags[i]);
+                    if (_tagRepository.Count(m => m.ID == tagID) == 0)
+                    {
+                        Tag tag = new Tag();
+                        tag.ID = tagID;
+                        tag.Name = tags[i].Trim();
+                        tag.Type = CommonConstants.ProductTag;
+                        _tagRepository.Add(tag);
+                    }
+                    ProductTag productTag = new ProductTag();
+                    productTag.TagID = tagID;
+                    productTag.ProductID = product.ID;
+                    _productTagRepository.Add(productTag);
+                }
+            }
+            return product;
         }
 
         public Product Delete(int id)

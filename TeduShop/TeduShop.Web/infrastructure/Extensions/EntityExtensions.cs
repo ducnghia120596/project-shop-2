@@ -90,7 +90,7 @@ namespace TeduShop.Web.infrastructure.Extensions
             //product.DisplayOrder = productVm.DisplayOrder;
             product.Image = productVm.Image;
             product.HomeFlag = productVm.HomeFlag;
-
+            product.Tags = productVm.Tags;
             product.CreatedDate = productVm.CreatedDate;
             product.CreatedBy = productVm.CreatedBy;
             product.UpdatedDate = productVm.UpdatedDate;
@@ -98,6 +98,7 @@ namespace TeduShop.Web.infrastructure.Extensions
             product.MetaKeyword = productVm.MetaKeyword;
             product.MetaDescription = productVm.MetaDescription;
             product.Status = productVm.Status;
+            
 
         }
     }
