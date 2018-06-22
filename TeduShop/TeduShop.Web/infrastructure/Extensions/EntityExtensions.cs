@@ -82,7 +82,7 @@ namespace TeduShop.Web.infrastructure.Extensions
             product.MoreImages = productVm.MoreImages;
             product.PromotionPrice = productVm.PromotionPrice;
             product.Warranty = productVm.Warranty;
-            product.PromotionPrice = productVm.PromotionPrice;
+            product.Content = productVm.Content;
             product.HotFlag = productVm.HotFlag;
             product.ViewCount = productVm.ViewCount;
             product.Price = productVm.Price;

@@ -5,8 +5,7 @@
     // $state, $stateParams thuộc ui-router angular ( cơ chế điều hướng )
     function productCategoryEditController($scope, apiService, notificationService, $state, $stateParams, commonService) {
         $scope.productCategory = {
-            CreatedDate: new Date(),
-            Status: true,
+            UpdatedDate: new Date(),
         }
         // phương thức để submit
         $scope.UpdateProductCategory = UpdateProductCategory;

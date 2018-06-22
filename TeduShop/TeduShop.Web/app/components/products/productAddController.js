@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller("productAddController", productAddController);
 
-    productAddController.$inject = ['$scope', 'apiService', 'notificationService', '$state'];
+    productAddController.$inject = ['$scope', 'apiService', 'notificationService', '$state', 'commonService'];
     // $state thuộc ui-router angular ( cơ chế điều hướng )
-    function productAddController($scope, apiService, notificationService, $state) {
+    function productAddController($scope, apiService, notificationService, $state, commonService) {
         $scope.product = {
             CreatedDate: new Date(),
             Status: true,
@@ -12,6 +12,11 @@
         $scope.ckeditorOptions = {
             language: 'vi',
             height:'200px'
+        }
+        // tự động sinh Alias
+        $scope.GetSeoTitle = GetSeoTitle;
+        function GetSeoTitle() {
+            $scope.product.Alias = commonService.getSeoTitle($scope.product.Name);
         }
         // phương thức để submit
         $scope.AddProduct = AddProduct;

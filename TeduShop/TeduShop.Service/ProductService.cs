@@ -97,6 +97,27 @@ namespace TeduShop.Service
         public void Update(Product Product)
         {
             _productRepository.Update(Product);
+            if (!string.IsNullOrEmpty(Product.Tags))
+            {
+                string[] tags = Product.Tags.Split(',');
+                for (var i = 0; i < tags.Length; i++)
+                {
+                    var tagID = StringHelper.ToUnsignString(tags[i]);
+                    if (_tagRepository.Count(m => m.ID == tagID) == 0)
+                    {
+                        Tag tag = new Tag();
+                        tag.ID = tagID;
+                        tag.Name = tags[i].Trim();
+                        tag.Type = CommonConstants.ProductTag;
+                        _tagRepository.Add(tag);
+                    }
+                    _productTagRepository.DeleteMulti(m => m.ProductID == Product.ID);
+                    ProductTag productTag = new ProductTag();
+                    productTag.TagID = tagID;
+                    productTag.ProductID = Product.ID;
+                    _productTagRepository.Add(productTag);
+                }
+            }
         }
     }
 }
