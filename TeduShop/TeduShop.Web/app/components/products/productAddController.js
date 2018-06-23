@@ -8,6 +8,9 @@
             CreatedDate: new Date(),
             Status: true,
         }
+        // khởi tạo mảng rỗng
+        $scope.moreImages = [];
+        
 
         $scope.ckeditorOptions = {
             language: 'vi',
@@ -22,6 +25,7 @@
         $scope.AddProduct = AddProduct;
 
         function AddProduct() {
+            $scope.product.MoreImages = JSON.stringify($scope.moreImages);
             apiService.post('/api/product/create', $scope.product,
                 function (result) {
                     notificationService.displaySuccess(result.data.Name + ' đã được thêm mới.');
@@ -40,16 +44,37 @@
                 console.log('Can not get list parent.')
             });
         }
-
-
-        loadProductCategory();
-
+        // Chọn ảnh
         $scope.ChooseImage = function () {
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
-                $scope.product.Image = fileUrl;
+                $scope.$apply(function () {
+                    $scope.product.Image = fileUrl;
+                });
             };
             finder.popup();
         };
+        /// Thêm nhiều ảnh
+        $scope.ChooseMoreImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                var duplicate = false;
+                angular.forEach($scope.moreImages, function (i, item) {
+                    if (i == fileUrl) {
+                        duplicate = true;
+                    }
+                });
+                if (duplicate) {
+                    notificationService.displayError('Ảnh đã tồn tại.');
+                }
+                else {
+                    $scope.$apply(function () {
+                        $scope.moreImages.push(fileUrl);
+                    });
+                }
+            };
+            finder.popup();
+        }
+        loadProductCategory();
     }
 })(angular.module('tedushop.products'));
