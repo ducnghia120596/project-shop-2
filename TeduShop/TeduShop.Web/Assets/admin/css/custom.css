@@ -1,3 +1,11 @@
 ﻿.has-error {
     color : red;
 }
+
+.top-right-deleteImage {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+

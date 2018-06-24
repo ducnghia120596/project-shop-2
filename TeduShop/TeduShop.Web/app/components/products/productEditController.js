@@ -87,6 +87,27 @@
                 }
                 );
         }
+        // click hình để xóa 
+        $scope.DeleteImage = DeleteImage;
+        function DeleteImage(url) {
+            remove_array_value($scope.moreImages, url);
+        }
+        // hàm hỗ trợ xóa hình
+        function remove_array_value(array, value) {
+            var index = array.indexOf(value);
+            if (index >= 0) {
+                array.splice(index, 1);
+                reindex_array(array);
+            }
+        }
+        function reindex_array(array) {
+            var result = [];
+            for (var key in array) {
+                result.push(array[key]);
+            }
+            return result;
+        }
+        //
 
         loadProductCategory();
         loadProductDetail();
