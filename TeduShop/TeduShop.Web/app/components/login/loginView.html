@@ -1,0 +1,57 @@
+﻿<!--
+    Lưu ý khi chèn đường dẫn css, js
+     Đường dẫn không có dẫu "~" ( chưa tìm được nguyên nhân tại sao)
+     Chưa lấy được màu nền
+-->
+<head>
+    <link href="/Assets/admin/css/iCheck/square/blue.css" rel="stylesheet" />
+</head>
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#"><b>e-Commerce</b> ĐN</a>
+    </div><!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg" style="font-size:x-large">Đăng nhập hệ thống</p>
+        <form role="form" method="post" ng-submit="loginSubmit()">
+            <div class="form-group has-feedback">
+                <input type="email" class="form-control" placeholder="Nhập email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" placeholder="Nhập mật khẩu">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox"> Nhớ mật khẩu
+                        </label>
+                    </div>
+                </div><!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
+                </div><!-- /.col -->
+            </div>
+        </form>
+        <!--<div class="social-auth-links text-center">
+            <p>- OR -</p>
+            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
+            <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
+        </div>
+        <a href="#">I forgot my password</a><br>
+        <a href="register.html" class="text-center">Register a new membership</a>-->
+    </div><!-- /.login-box-body -->
+</div><!-- /.login-box -->
+<!-- iCheck -->
+<script src="/Assets/admin/css/iCheck/icheck.min.js"></script>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+    });
+</script>
+
